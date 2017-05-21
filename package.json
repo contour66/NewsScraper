@@ -1,0 +1,19 @@
+{
+  "name": "newsscraper",
+  "version": "1.0.0",
+  "description": "new scraping app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/contour66/NewsScraper.git"
+  },
+  "author": "zamir thind",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/contour66/NewsScraper/issues"
+  },
+  "homepage": "https://github.com/contour66/NewsScraper#readme"
+}
