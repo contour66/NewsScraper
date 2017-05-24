@@ -3,24 +3,18 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require ("mongoose");
-var cheerio = require ("cheerio");
 var exphbs = require("express-handlebars");
-// var mongojs = require("mongojs");
 var request = require("request");
-var Article = require("./models/Articles.js");
-
-
-
 var Promise = require("bluebird");
 mongoose.Promise = Promise;
 
 var app = express();
-var routes = require ("./controllers/articlesController.js");
+var routes = require ("./controllers/controller.js");
 
 
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
-var port = 3000;
+var PORT = process.env.PORT || 3000;
 
 mongoose.connect('mongodb://localhost/myapp');
 var db = mongoose.connection;
@@ -34,9 +28,9 @@ db.once("open", function() {
 });
 
 
-
+app.use(bodyParser.urlencoded({ extended: false}));
 app.use("/", routes);
-app.listen(3000, function(){
+app.listen(PORT, function(){
 	console.log("App running on port 3000!");
 });
 
