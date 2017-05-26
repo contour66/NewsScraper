@@ -1,0 +1,21 @@
+<div class ="container">
+
+<h1>NewsScraper</h1>
+
+<div class="articles-container">
+		<div class ="row">
+		{{#each data}}
+			
+		    <div class="col-lg-4">
+			    <div class="article-box">
+			        <div class="news-title"> 
+			        	{{this.title}} 
+			        	<a href = "{{this.link}}">Link</a>
+			        	{{this.comment}}
+			        </div>
+			    </div>
+		    </div>
+		    
+		{{/each}}
+		</div>
+</div>

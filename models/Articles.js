@@ -9,6 +9,8 @@ var Schema = mongoose.Schema;
 var ArticleSchema = new Schema ({
 	title: String,
 	link: String,
+	// domain: String,
+	// unique: true,
 	comments: [{
 		type:Schema.Types.ObjectId,
 		ref: "Comment"

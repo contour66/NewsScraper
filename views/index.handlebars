@@ -1,14 +1,25 @@
 <div class ="container">
 
-<h1>NewsScraper</h1>
-
-{{#each doc}}
-    <div class="col-md-6">
-	    <div class="news-display">
-	        <div class="news-title"> 
-	        	{{this.title}} 
-	        </div>
-	    </div>
-    </div>
-{{/each}}
-
+<div class="articles-container">
+		<div class ="row">
+		{{#each data}}
+		    <div class="col-lg-6">
+			    <div class="article-box">
+			        <div class="news-title"> 
+			        	{{this.title}} 
+			        	{{!-- <button type="submit" class="btn btn-success" id="save-article">Save Article</button>--}}
+			        </div>
+			        <div><a href = "{{this.link}}">Link</a> </div>
+			       <div class="form-group">
+    					<label for="leave-comment">Comment</label>
+    					<textarea class="form-control comment-box"  rows="3"></textarea>
+    					 <button type="submit" class="btn btn-primary submit-comment">Submit</button>
+  					</div>
+  					<div class="comments-display">
+  						{{this.comments}}
+  					</div>
+			    </div>
+		    </div>    
+		{{/each}}
+		</div>
+</div>
