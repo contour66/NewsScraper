@@ -11,10 +11,11 @@ var ArticleSchema = new Schema ({
 	link: String,
 	// domain: String,
 	// unique: true,
-	comments: [{
-		type:Schema.Types.ObjectId,
-		ref: "Comment"
-	}]
+	// comments: [{
+	// 	type:Schema.Types.ObjectId,
+	// 	ref: "Comment"
+	// }]
+	comments: [{ _commentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}}]
 });
 
 var Article = mongoose.model("Article", ArticleSchema);
