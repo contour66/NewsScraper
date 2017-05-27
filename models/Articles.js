@@ -1,8 +1,8 @@
 var mongoose = require ("mongoose");
-var mongojs = require("mongojs");
-var databaseUrl = "scraper";
-var collections = ["scrapedData"];
-var db = mongojs(databaseUrl, collections);
+// var mongojs = require("mongojs");
+// var databaseUrl = "scraper";
+// var collections = ["scrapedData"];
+// var db = mongojs(databaseUrl, collections);
 
 var Schema = mongoose.Schema;
 
@@ -15,7 +15,6 @@ var ArticleSchema = new Schema ({
 	// 	type:Schema.Types.ObjectId,
 	// 	ref: "Comment"
 	// }]
-	comments: [{ _commentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}}]
 });
 
 var Article = mongoose.model("Article", ArticleSchema);

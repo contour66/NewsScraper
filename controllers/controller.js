@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var cheerio = require ("cheerio");
 var Article = require("../models/Articles.js");
-var Article = require("../models/Comments.js");
+var Comments = require("../models/Comments.js");
 var request = require("request");
 
 router.get("/", function (req,res){
@@ -102,7 +102,7 @@ router.get("/article/:id", function(req, res) {
   // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
   Article.findOne({ "_id": req.params.id })
   // ..and populate all of the notes associated with it
-  .populate("comments")
+  .populate("comment")
   // now, execute our query
   .exec(function(error, doc) {
     // Log any errors
@@ -118,17 +118,23 @@ router.get("/article/:id", function(req, res) {
 
 router.post("/article/:id", function(req, res) {
   // Create a new note and pass the req.body to the entry
-  var newComment = new Comment(req.body);
-  // And save the new note the db
-  newComment.save(function(error, doc) {
+  // var newComment = new Comment(req.body);
+  // // And save the new note the db
+  // newComment.save(function(error, doc) {
     // Log any errors
+
+    var newComment = {
+      article: req.params.id,
+      comment: req.body
+  };
+  Comment.create(newComment, function(err, doc) {
     if (error) {
       console.log(error);
     }
     // Otherwise
     else {
       // Use the article id to find and update it's note
-      Article.findOneAndUpdate({ "_id": req.params._id }, { "comment": doc._id })
+      Article.findOneAndUpdate({ "_id": req.params.id }, { "comment": doc._id })
       // Execute the above query
       .exec(function(err, doc) {
         // Log any errors

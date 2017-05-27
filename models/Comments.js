@@ -8,10 +8,10 @@ var Schema = mongoose.Schema;
 
 var CommentSchema = new Schema ({
 	comment: String,
-	article:[{
+	article:{
 		type:mongoose.Schema.Types.ObjectId,
 		ref: "Article"
-	}]
+	}
 });
 
 var Comment = mongoose.model("Comment", CommentSchema);
